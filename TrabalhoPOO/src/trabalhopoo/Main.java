@@ -5,6 +5,8 @@
  */
 package trabalhopoo;
 
+import trabalhopoo.UI.UIPrincipal;
+
 /**
  *
  * @author david
@@ -15,7 +17,14 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Sistema s = new Sistema();
+        UIPrincipal p = new UIPrincipal();
+        
+        p.setVisible(true);
+        
+        //s.executar();
+        
+                
     }
     
 }
