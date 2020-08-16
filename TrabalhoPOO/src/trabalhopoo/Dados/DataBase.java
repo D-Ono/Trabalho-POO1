@@ -27,9 +27,24 @@ public class DataBase {
         contadorD = 0;
         contadorF = 0;
     }
+    
+    public void addDepartamento(Departamento d){
+        if (contadorD < MAX_FUNCIONARIO){
+            departamentos[0] = d;
+            contadorD++;
+        }
+    }
 
     public void addFuncionario(){
         
+    }
+    
+    public String getNomeDepartamento(){
+        return departamentos[--contadorD].getNome();
+    }
+
+    public String getCodigoDepartamento(){
+        return departamentos[0].getCodigo();
     }
     
     public static DataBase getInstancia() {

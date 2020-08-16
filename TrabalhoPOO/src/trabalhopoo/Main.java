@@ -5,6 +5,8 @@
  */
 package trabalhopoo;
 
+import trabalhopoo.Controlador.Controlador;
+import trabalhopoo.Modelo.Sistema;
 import trabalhopoo.UI.UIPrincipal;
 
 /**
@@ -17,13 +19,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Sistema s = new Sistema();
         UIPrincipal p = new UIPrincipal();
-        
+        //Controlador c = new Controlador();
+        //c.addDepartamento("David", "10");
+        //System.out.println(c.getNomeD());
         p.setVisible(true);
-        
-        //s.executar();
-        
                 
     }
     

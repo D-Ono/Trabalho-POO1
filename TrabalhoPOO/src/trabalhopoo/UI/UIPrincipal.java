@@ -27,6 +27,7 @@ public class UIPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -50,6 +51,11 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhopoo/Imagens/UNESP_Logo.jpg"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(985, 423));
+        jLabel1.setMinimumSize(new java.awt.Dimension(985, 423));
+        jLabel1.setPreferredSize(new java.awt.Dimension(985, 423));
+
         jMenu1.setText("Cadastrar");
 
         jMenuItem1.setText("Funcionário");
@@ -61,6 +67,11 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Departamentos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
@@ -68,9 +79,19 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Relatorio");
 
         jMenuItem3.setText("Geral");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setText("Departamentos");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem4);
 
         jMenuItem5.setText("Departamentos em uma faixa preço");
@@ -82,21 +103,51 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenu2.add(jMenuItem5);
 
         jMenuItem6.setText("Funcionário em uma faixa preço");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
         jMenuItem7.setText("Todos Funcionários");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem7);
 
         jMenuItem8.setText("Todos Técnicos");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem8);
 
         jMenuItem9.setText("Todos Docentes");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem9);
 
         jMenuItem10.setText("Todos Docentes Efetivos");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem10);
 
         jMenuItem11.setText("Todos Docentes Substitutos");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem11);
 
         jMenuItem12.setText("Informação de um Departamento");
@@ -107,7 +158,7 @@ public class UIPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem12);
 
-        jMenuItem15.setText("Funcionário por Código");
+        jMenuItem15.setText("Buscar Funcionário por Código");
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem15ActionPerformed(evt);
@@ -115,7 +166,12 @@ public class UIPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem15);
 
-        jMenuItem13.setText("Funcionário por Nome");
+        jMenuItem13.setText("Buscar Funcionário por Nome");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem13);
 
         jMenuBar1.add(jMenu2);
@@ -136,11 +192,16 @@ public class UIPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -148,7 +209,7 @@ public class UIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         CadastroFuncionario cf = new CadastroFuncionario();
-        cf.setTitle("AGORAVAI");
+        cf.setTitle("Cadastro De Novo Funcionário");
         cf.setVisible(true);
         cf.setDefaultCloseOperation(CadastroFuncionario.DISPOSE_ON_CLOSE);
 
@@ -156,11 +217,17 @@ public class UIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        // TODO add your handling code here:
+        InformacaoDepartamentoEspecifico de = new InformacaoDepartamentoEspecifico();
+        de.setTitle("Relatorio de um Departamento");
+        de.setVisible(true);
+        de.setDefaultCloseOperation(InformacaoDepartamentoEspecifico.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
+        RelatorioDepartamentoFaixaPreco r = new RelatorioDepartamentoFaixaPreco();
+        r.setTitle("Departamentos com o Salario dentro da Faixa de Preço");
+        r.setVisible(true);
+        r.setDefaultCloseOperation(RelatorioDepartamentoFaixaPreco.DISPOSE_ON_CLOSE);        
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
@@ -168,8 +235,77 @@ public class UIPrincipal extends javax.swing.JFrame {
         codigoFuncionario.setTitle("Buscar Funcionário pelo Código");
         codigoFuncionario.setVisible(true);
         codigoFuncionario.setDefaultCloseOperation(BuscaFuncionarioCodigo.DISPOSE_ON_CLOSE);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        BuscaFuncionarioNome nomeFuncionario = new BuscaFuncionarioNome();
+        nomeFuncionario.setTitle("Buscar Funcionário pelo Nome");
+        nomeFuncionario.setVisible(true);
+        nomeFuncionario.setDefaultCloseOperation(BuscaFuncionarioNome.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        CadastroDepartamento d = new CadastroDepartamento();
+        d.setTitle("Cadastro de Departamento");
+        d.setVisible(true);
+        d.setDefaultCloseOperation(CadastroDepartamento.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        RelatorioGeral rg = new RelatorioGeral();
+        rg.setTitle("Relatorio Geral");
+        rg.setVisible(true);
+        rg.setDefaultCloseOperation(RelatorioGeral.DISPOSE_ON_CLOSE);        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        RelatorioDepartamento rd = new RelatorioDepartamento();
+        rd.setTitle("Relatorio Dos Departamentos");
+        rd.setVisible(true);
+        rd.setDefaultCloseOperation(RelatorioDepartamento.DISPOSE_ON_CLOSE);  
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        RelatorioFuncionarioFaixaPreco f = new RelatorioFuncionarioFaixaPreco();
+        f.setTitle("Funcionários com o Salario dentro da Faixa de Preço");
+        f.setVisible(true);
+        f.setDefaultCloseOperation(RelatorioFuncionarioFaixaPreco.DISPOSE_ON_CLOSE);        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        RelatorioFuncionario rf = new RelatorioFuncionario();
+        rf.setTitle("Relatorio Dos Funcionarios");
+        rf.setVisible(true);
+        rf.setDefaultCloseOperation(RelatorioFuncionario.DISPOSE_ON_CLOSE); 
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        RelatorioTecnico rt = new RelatorioTecnico();
+        rt.setTitle("Relatorio Dos Tecnicos");
+        rt.setVisible(true);
+        rt.setDefaultCloseOperation(RelatorioTecnico.DISPOSE_ON_CLOSE);         
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        RelatorioDocente rd = new RelatorioDocente();
+        rd.setTitle("Relatorio Dos Docentes");
+        rd.setVisible(true);
+        rd.setDefaultCloseOperation(RelatorioDocente.DISPOSE_ON_CLOSE);          
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        RelatorioEfetivo re = new RelatorioEfetivo();
+        re.setTitle("Relatorio Dos Efetivos");
+        re.setVisible(true);
+        re.setDefaultCloseOperation(RelatorioEfetivo.DISPOSE_ON_CLOSE);          
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        RelatorioSubstituto rs = new RelatorioSubstituto();
+        rs.setTitle("Relatorio Dos Substitutos");
+        rs.setVisible(true);
+        rs.setDefaultCloseOperation(RelatorioSubstituto.DISPOSE_ON_CLOSE);         
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,6 +343,7 @@ public class UIPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
