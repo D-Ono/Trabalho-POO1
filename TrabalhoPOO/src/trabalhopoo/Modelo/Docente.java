@@ -12,8 +12,9 @@ package trabalhopoo.Modelo;
 public abstract class Docente extends Funcionario{
     protected String titulacao;
 
-    public Docente(String codigo, String nome, double salario, String nivel) {
+    public Docente(String codigo, String nome, double salario, String nivel, String titulacao) {
         super(codigo, nome, salario, nivel);
+        this.titulacao = titulacao;
     }
     
     

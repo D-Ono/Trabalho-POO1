@@ -6,6 +6,7 @@
 package trabalhopoo.Modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,20 +15,19 @@ import java.io.Serializable;
 public class Departamento implements Serializable{
     private String codigo;
     private String nome;
-    private Funcionario funcionarios[];
+    private float gasto;
+    private ArrayList<Funcionario>funcionarios = new ArrayList<Funcionario>();
 
     public Departamento(String codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
+        this.gasto = 0.0f;
     }
 
     public Departamento() {
         codigo = "";
         nome = "";
-    }
-    
-    public void addFuncionario(String nivel){
-        
+        gasto = 0.0f;
     }
 
     public String getCodigo() {
@@ -46,11 +46,17 @@ public class Departamento implements Serializable{
         this.nome = nome;
     }
 
-    public Funcionario[] getFuncionarios() {
+    public ArrayList<Funcionario> getFuncionarios() {
         return funcionarios;
     }
 
-    public void setFuncionarios(Funcionario[] funcionarios) {
-        this.funcionarios = funcionarios;
+    public void setFuncionarios(Funcionario funcionarios) {
+        this.funcionarios.add(funcionarios);
+        gasto = (float) (gasto + funcionarios.getSalario());
     }
+
+    public float getGasto() {
+        return gasto;
+    }
+
 }

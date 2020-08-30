@@ -5,6 +5,7 @@
  */
 package trabalhopoo.UI;
 
+import javax.swing.JOptionPane;
 import trabalhopoo.Controlador.Controlador;
 
 /**
@@ -140,7 +141,9 @@ public class CadastroDepartamento extends javax.swing.JFrame {
         }else{
             Controlador control = new Controlador();
             control.addDepartamento(txtNome.getText(), txtCodigo.getText());
-            jLabel4.setText("Departamento Cadastrado!");
+            JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
+            txtNome.setText("");
+            txtCodigo.setText("");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

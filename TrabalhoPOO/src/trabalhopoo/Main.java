@@ -5,8 +5,8 @@
  */
 package trabalhopoo;
 
+import java.awt.Color;
 import trabalhopoo.Controlador.Controlador;
-import trabalhopoo.Modelo.Sistema;
 import trabalhopoo.UI.UIPrincipal;
 
 /**
@@ -20,11 +20,7 @@ public class Main {
      */
     public static void main(String[] args) {
         UIPrincipal p = new UIPrincipal();
-        //Controlador c = new Controlador();
-        //c.addDepartamento("David", "10");
-        //System.out.println(c.getNomeD());
         p.setVisible(true);
-                
     }
     
 }

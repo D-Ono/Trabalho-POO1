@@ -5,13 +5,20 @@
  */
 package trabalhopoo.UI;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import trabalhopoo.Controlador.Controlador;
+import trabalhopoo.Modelo.Efetivo;
+import trabalhopoo.Modelo.Funcionario;
+import trabalhopoo.Modelo.Tecnico;
+
 /**
  *
  * @author david
  */
 public class BuscaFuncionarioCodigo extends javax.swing.JFrame {
     private String codigo;
-
+    private ArrayList<Funcionario>funcionarios;
     /**
      * Creates new form BuscaFuncionarioCodigo
      */
@@ -189,8 +196,25 @@ public class BuscaFuncionarioCodigo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        codigo = txtCode.getText();
-        jLabel8.setText(codigo);
+        Controlador control = new Controlador();
+        funcionarios  = control.buscaFuncionario();
+        Tecnico t = null;
+        Efetivo e = null;
+        
+        if(txtCode.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Insira o Código do Docente!");
+            txtCode.requestFocus();
+        }
+        else{
+            for(Funcionario f: funcionarios){
+                if (f instanceof Efetivo)
+                    e = (Efetivo) f;
+                if(e.getCodigo().equals(txtCode.getText())){
+                    System.out.println(f.getNome());
+                    System.out.println("Deu erro");
+                }
+            }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

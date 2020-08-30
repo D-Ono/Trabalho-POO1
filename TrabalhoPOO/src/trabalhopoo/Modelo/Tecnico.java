@@ -18,6 +18,7 @@ public class Tecnico extends Funcionario implements Serializable {
 
     public Tecnico(String codigo, String nome, double salario, String nivel, String funcao) {
         super(codigo, nome, salario, nivel);
+        this.salario = calcularSalario();
         this.funcao = funcao;
     }  
         

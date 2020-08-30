@@ -5,17 +5,27 @@
  */
 package trabalhopoo.UI;
 
+import java.awt.Color;
+import trabalhopoo.Controlador.Controlador;
+
 /**
  *
  * @author david
  */
 public class UIPrincipal extends javax.swing.JFrame {
-
+    private String nomeUniversidade;
+    private Controlador control = new Controlador();
     /**
      * Creates new form UIPrincipal
      */
     public UIPrincipal() {
         initComponents();
+        InserirNomeUniversidade u = new InserirNomeUniversidade();
+        u.setVisible(true);
+        u.setTitle("Nome da Universidade");
+        u.setDefaultCloseOperation(InserirNomeUniversidade.DISPOSE_ON_CLOSE);
+        nomeUniversidade = u.getName();
+        labelNome.setText(nomeUniversidade);
     }
 
     /**
@@ -27,10 +37,14 @@ public class UIPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        labelNome = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -51,20 +65,41 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhopoo/Imagens/UNESP_Logo.jpg"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(985, 423));
-        jLabel1.setMinimumSize(new java.awt.Dimension(985, 423));
-        jLabel1.setPreferredSize(new java.awt.Dimension(985, 423));
+        labelNome.setFont(new java.awt.Font("Verdana", 3, 24)); // NOI18N
 
         jMenu1.setText("Cadastrar");
 
-        jMenuItem1.setText("Funcionário");
+        jMenu4.setText("Funcionário");
+
+        jMenuItem1.setText("Técnico");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu4.add(jMenuItem1);
+
+        jMenu5.setText("Docente");
+
+        jMenuItem17.setText("Efetivo");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem17);
+
+        jMenuItem18.setText("Substituto");
+        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem18ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem18);
+
+        jMenu4.add(jMenu5);
+
+        jMenu1.add(jMenu4);
 
         jMenuItem2.setText("Departamentos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -193,28 +228,20 @@ public class UIPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(387, 387, 387)
+                .addComponent(labelNome)
+                .addContainerGap(513, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(172, 172, 172)
+                .addComponent(labelNome)
+                .addContainerGap(208, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        CadastroFuncionario cf = new CadastroFuncionario();
-        cf.setTitle("Cadastro De Novo Funcionário");
-        cf.setVisible(true);
-        cf.setDefaultCloseOperation(CadastroFuncionario.DISPOSE_ON_CLOSE);
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         InformacaoDepartamentoEspecifico de = new InformacaoDepartamentoEspecifico();
@@ -243,13 +270,6 @@ public class UIPrincipal extends javax.swing.JFrame {
         nomeFuncionario.setVisible(true);
         nomeFuncionario.setDefaultCloseOperation(BuscaFuncionarioNome.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        CadastroDepartamento d = new CadastroDepartamento();
-        d.setTitle("Cadastro de Departamento");
-        d.setVisible(true);
-        d.setDefaultCloseOperation(CadastroDepartamento.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         RelatorioGeral rg = new RelatorioGeral();
@@ -307,6 +327,34 @@ public class UIPrincipal extends javax.swing.JFrame {
         rs.setDefaultCloseOperation(RelatorioSubstituto.DISPOSE_ON_CLOSE);         
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        CadastroDepartamento d = new CadastroDepartamento();
+        d.setTitle("Cadastro de Departamento");
+        d.setVisible(true);
+        d.setDefaultCloseOperation(CadastroDepartamento.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        CadastroEfetivo ce = new CadastroEfetivo();
+        ce.setTitle("Cadastro do Funcionário Docente Efetivo");
+        ce.setVisible(true);
+        ce.setDefaultCloseOperation(CadastroEfetivo.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        CadastroTecnico ct = new CadastroTecnico();
+        ct.setTitle("Cadastro do Funcionário Técnico");
+        ct.setVisible(true);
+        ct.setDefaultCloseOperation(CadastroTecnico.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        CadastroSubstituto cs = new CadastroSubstituto();
+        cs.setTitle("Cadastro do Funcionário Docente Substituto");
+        cs.setVisible(true);
+        cs.setDefaultCloseOperation(CadastroSubstituto.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -337,16 +385,19 @@ public class UIPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new UIPrincipal().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -356,6 +407,8 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -364,5 +417,6 @@ public class UIPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JLabel labelNome;
     // End of variables declaration//GEN-END:variables
 }

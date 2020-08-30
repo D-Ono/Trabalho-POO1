@@ -6,6 +6,7 @@
 package trabalhopoo.Dados;
 
 import trabalhopoo.Modelo.Departamento;
+import trabalhopoo.Modelo.Efetivo;
 import trabalhopoo.Modelo.Funcionario;
 
 /**
@@ -28,23 +29,25 @@ public class DataBase {
         contadorF = 0;
     }
     
+    public static DataBase getInstance(){
+        if (instancia == null){
+            instancia = new DataBase();
+        }
+        return instancia;
+    }
+    
     public void addDepartamento(Departamento d){
-        if (contadorD < MAX_FUNCIONARIO){
-            departamentos[0] = d;
+        if (contadorD < MAX_DEPARTAMENTO){
+            departamentos[contadorD] = d;
             contadorD++;
         }
     }
 
-    public void addFuncionario(){
-        
-    }
-    
-    public String getNomeDepartamento(){
-        return departamentos[--contadorD].getNome();
-    }
-
-    public String getCodigoDepartamento(){
-        return departamentos[0].getCodigo();
+    public void addEfetivo(Efetivo e){
+        if(contadorF < MAX_FUNCIONARIO){
+            funcionarios[contadorF] = e;
+            contadorF++;
+        }
     }
     
     public static DataBase getInstancia() {

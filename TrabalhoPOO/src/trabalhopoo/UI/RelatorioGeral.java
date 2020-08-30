@@ -5,17 +5,59 @@
  */
 package trabalhopoo.UI;
 
+import java.util.ArrayList;
+import trabalhopoo.Controlador.Controlador;
+import trabalhopoo.Modelo.Departamento;
+import trabalhopoo.Modelo.Efetivo;
+import trabalhopoo.Modelo.Funcionario;
+import trabalhopoo.Modelo.Substituto;
+import trabalhopoo.Modelo.Tecnico;
+
 /**
  *
  * @author david
  */
 public class RelatorioGeral extends javax.swing.JFrame {
-
+    private Controlador control = new Controlador();
+    private ArrayList<Departamento>departamentos = control.buscaDepartamento();
     /**
      * Creates new form RelatorioGeral
      */
     public RelatorioGeral() {
         initComponents();
+        
+        Efetivo e = null;
+        Substituto s = null;
+        Tecnico t = null;
+        
+        for(Departamento d: departamentos){
+            jTextArea2.append(" \tDepartamento: " + d.getNome()
+                             + "\n Código do Departamento: " + d.getCodigo()
+                             + "\n Gasto Total com os Funcionários: " + d.getGasto()
+                             + "\n Funcionários:");
+            for(Funcionario f: d.getFuncionarios()){
+                jTextArea2.append("\n  - Nome: " + f.getNome()
+                                  + "\n  - Código do Funcionário: " + f.getCodigo()
+                                  + "\n  - Salario do Funcionário: " + f.getSalario()
+                                  + "\n  - Nivel do Funcionário: " + f.getNivel()
+                );
+                if(f instanceof Efetivo){
+                    e = (Efetivo)f;
+                    jTextArea2.append("\n  - Area do Funcionário: " + e.getArea());
+                }
+                else if(f instanceof Substituto){
+                    s = (Substituto)f;
+                    jTextArea2.append("\n  - Carga Horaria do Funcionário: " + s.getCargaHoraria());
+                }
+                else{
+                    t = (Tecnico)f;
+                    jTextArea2.append("\n  - Area do Funcionário: " + t.getFuncao());
+                }
+                jTextArea2.append("\n");
+            }
+            jTextArea2.append("\n\n\n");
+        }
+
     }
 
     /**
@@ -52,9 +94,9 @@ public class RelatorioGeral extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(39, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 

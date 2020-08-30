@@ -5,26 +5,51 @@
  */
 package trabalhopoo.Controlador;
 
+import java.util.ArrayList;
 import trabalhopoo.Modelo.Departamento;
-import trabalhopoo.Modelo.Sistema;
+import trabalhopoo.Modelo.Funcionario;
+import trabalhopoo.Modelo.Universidade;
 
 /**
  *
  * @author david
  */
 public class Controlador {
-    private Sistema s = Sistema.getInstance();
+    private Universidade s = Universidade.getInstance();
     
     public void addDepartamento(String nome, String codigo){
         s.addDepartamento(nome, codigo);
     }
 
-    public String getNomeD(){
-        return s.getNomeDepartamento();
+    public ArrayList<Departamento> buscaDepartamento(){
+        return s.getDepartamentos();
     }
     
-    public String getCodigoD(){
-        return s.getCodigoDepartamento();
+    public void addEfetivo(String nomeDepartamento, String codigo, String nome, double salario, String nivel,String titulacao, String area){
+        s.addEfetivo(nomeDepartamento, codigo, nome, salario, nivel,titulacao, area);
     }
     
+    public boolean existeDepartamento(String nome){
+        return s.existeDepartamento(nome);
+    }
+    
+    public ArrayList<Funcionario> buscaFuncionario(){
+        return s.getFuncionarios();
+    }
+
+    public void addSubstituto(String nomeDepartamento, String codigo, String nome, float salario, String nivel, String titulacao, int cargaHoraria) {
+        s.addSubstituto(nomeDepartamento, codigo, nome, salario, nivel,titulacao, cargaHoraria);
+    }
+
+    public void addTecnico(String nomeDepartamento, String codigo, String nome, float salario, String nivel, String funcao) {
+        s.addTecnico(nomeDepartamento, codigo, nome, salario, nivel, funcao);
+    }
+    
+    public void setNomeUniversidade(String nome){
+        s.setNome(nome);
+    }
+    
+    public String getNomeUniversidade(){
+        return s.getNome();
+    }
 }

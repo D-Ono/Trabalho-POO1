@@ -27,5 +27,11 @@ public abstract class Funcionario {
     public abstract float calcularSalario();
 
     public abstract double getSalario();
-    
+
+    public abstract String getNome();
+
+    public abstract String getCodigo();
+
+    public abstract String getNivel();
+
 }

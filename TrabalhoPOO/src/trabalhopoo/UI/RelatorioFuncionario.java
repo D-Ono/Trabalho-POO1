@@ -5,17 +5,41 @@
  */
 package trabalhopoo.UI;
 
+import java.util.ArrayList;
+import trabalhopoo.Controlador.Controlador;
+import trabalhopoo.Modelo.Efetivo;
+import trabalhopoo.Modelo.Funcionario;
+import trabalhopoo.Modelo.Substituto;
+import trabalhopoo.Modelo.Tecnico;
+
 /**
  *
  * @author david
  */
 public class RelatorioFuncionario extends javax.swing.JFrame {
-
+        Controlador control = new Controlador();
+        private ArrayList<Funcionario>funcionarios = control.buscaFuncionario();
+        private Efetivo e;
+        private Substituto s;
+        private Tecnico t;
     /**
      * Creates new form RelatorioFuncionario
      */
     public RelatorioFuncionario() {
         initComponents();
+        
+        for(Funcionario f: funcionarios){
+            if(f instanceof Efetivo){
+                e = (Efetivo)f;
+                jTextArea2.append(" Nome do Departamento: " + e.getNome() +
+                        "\n Codigo do Departamento " + e.getSalario() + "\n area:" + e.getArea() + "\n\n");
+            }else if(f instanceof Substituto){
+                s = (Substituto)f;
+            }else{
+                t = (Tecnico)f;
+            }
+                          
+        }
     }
 
     /**

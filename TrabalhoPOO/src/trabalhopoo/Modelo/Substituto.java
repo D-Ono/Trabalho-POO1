@@ -15,8 +15,9 @@ public class Substituto extends Docente{
     private int cargaHoraria;
     private final Adicionais c = new Adicionais();
 
-    public Substituto(String codigo, String nome, double salario, String nivel, int cargaHoraria) {
-        super(codigo, nome, salario, nivel);
+    public Substituto(String codigo, String nome, double salario, String nivel,String titulacao, int cargaHoraria) {
+        super(codigo, nome, salario, nivel, titulacao);
+        this.salario = calcularSalario();
         this.cargaHoraria = cargaHoraria;
     }
 

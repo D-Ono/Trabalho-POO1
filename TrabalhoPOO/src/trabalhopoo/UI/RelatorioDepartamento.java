@@ -5,7 +5,10 @@
  */
 package trabalhopoo.UI;
 
+import java.util.ArrayList;
 import trabalhopoo.Controlador.Controlador;
+import trabalhopoo.Modelo.Departamento;
+import trabalhopoo.Modelo.Funcionario;
 
 /**
  *
@@ -13,7 +16,8 @@ import trabalhopoo.Controlador.Controlador;
  */
 public class RelatorioDepartamento extends javax.swing.JFrame {
         Controlador control = new Controlador();
-        String nome = "David Ono";
+        ArrayList<Departamento>departamentos = control.buscaDepartamento();
+        private ArrayList<Funcionario>funcionarios;
         
     /**
      * Creates new form RelatorioDepartamento
@@ -21,9 +25,15 @@ public class RelatorioDepartamento extends javax.swing.JFrame {
     public RelatorioDepartamento() {
         initComponents();
         
-        
-        jTextArea2.append("Nome do Departamento: " + control.getNomeD());
-        
+        for(Departamento d: departamentos){
+            jTextArea2.append(" \n\n Nome do Departamento: " + d.getNome() +
+                        "\n Codigo do Departamento " + d.getCodigo());
+            funcionarios = d.getFuncionarios();
+            for(Funcionario f: funcionarios){
+                jTextArea2.append("\n Funcionario: " + f.getNome());
+            }
+        }
+    
         
     }
 
