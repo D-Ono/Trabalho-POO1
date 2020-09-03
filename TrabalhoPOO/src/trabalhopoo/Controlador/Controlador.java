@@ -45,6 +45,34 @@ public class Controlador {
         s.addTecnico(nomeDepartamento, codigo, nome, salario, nivel, funcao);
     }
     
+    public String relatorioGeral(){
+        return s.relatorioGeral();
+    }
+    
+    public String relatorioDepartamento(){
+        return s.relatorioDepartamentos();
+    }
+    
+    public String relatorioFuncionarios(){
+        return s.relatorioFuncionario();
+    }
+    
+    public String relatorioDocente(){
+        return s.relatorioDocentes();
+    }
+    
+    public String relatorioTecnico(){
+        return s.relatorioTecnico();
+    }
+    
+    public String relatorioEfetivo(){
+        return s.relatorioEfetivo();
+    }
+    
+    public String relatorioSubstituto(){
+        return s.relatorioSubstituto();
+    }
+    
     public void setNomeUniversidade(String nome){
         s.setNome(nome);
     }

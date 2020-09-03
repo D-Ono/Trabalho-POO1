@@ -131,6 +131,8 @@ public class CadastroDepartamento extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Controlador control = new Controlador();
+        
         if(txtNome.getText().trim().equals("")){
             jLabel4.setText("Insira o Nome do Departamento!");
             txtNome.requestFocus();
@@ -138,8 +140,9 @@ public class CadastroDepartamento extends javax.swing.JFrame {
         else if(txtCodigo.getText().trim().equals("")){
             jLabel4.setText("Insira o Código do Departamento!");
             txtCodigo.requestFocus();
-        }else{
-            Controlador control = new Controlador();
+        }else if(control.existeDepartamento(txtNome.getText())){
+                jLabel4.setText("O Departamento já existe!");
+        }else{            
             control.addDepartamento(txtNome.getText(), txtCodigo.getText());
             JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
             txtNome.setText("");

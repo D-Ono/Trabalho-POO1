@@ -19,6 +19,7 @@ public class CadastroSubstituto extends javax.swing.JFrame {
      */
     public CadastroSubstituto() {
         initComponents();
+        jCombo.removeAllItems();
     }
 
     /**
@@ -53,8 +54,8 @@ public class CadastroSubstituto extends javax.swing.JFrame {
         botaoLivre = new javax.swing.JRadioButton();
         botaoS2 = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
-        txtDepartamento = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jCombo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +120,13 @@ public class CadastroSubstituto extends javax.swing.JFrame {
 
         jLabel7.setText("Departamento do Docente:");
 
+        jCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,15 +174,15 @@ public class CadastroSubstituto extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jCombo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                            .addComponent(txtCodigo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                            .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(158, 158, 158)))
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -194,8 +202,8 @@ public class CadastroSubstituto extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(jCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botaoS1)
@@ -262,9 +270,8 @@ public class CadastroSubstituto extends javax.swing.JFrame {
             txtSalario.requestFocus();
             podeCadastrar = false;
         }
-        if(txtDepartamento.getText().trim().equals("")){
+        if(jCombo.isEnabled()){
             JOptionPane.showMessageDialog(this, "Insira o Departamento do Docente!");
-            txtDepartamento.requestFocus();
             podeCadastrar = false;
         }
         if(botaoS1.isSelected()){
@@ -299,17 +306,21 @@ public class CadastroSubstituto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Insira a Carga Horaria do Docente!");
             podeCadastrar = false;
         }
-        if(podeCadastrar==true && control.existeDepartamento(txtDepartamento.getText())){
-            control.addSubstituto(txtDepartamento.getText(), txtCodigo.getText(), txtNome.getText(), Float.parseFloat(txtSalario.getText()), nivel, titulacao, cargaHoraria);
+        if(podeCadastrar==true && control.existeDepartamento((String) jCombo.getSelectedItem())){
+            control.addSubstituto((String) jCombo.getSelectedItem(), txtCodigo.getText(), txtNome.getText(), Float.parseFloat(txtSalario.getText()), nivel, titulacao, cargaHoraria);
             txtNome.setText("");
             txtCodigo.setText("");
             txtSalario.setText("");
-            txtDepartamento.setText("");
+            jCombo.setEnabled(true);
             JOptionPane.showMessageDialog(this, "Cadastro do Docente realizado com Sucesso!");            
         }else{
             JOptionPane.showMessageDialog(this, "Departamento Inexistente!");            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,6 +372,7 @@ public class CadastroSubstituto extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -369,7 +381,6 @@ public class CadastroSubstituto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDepartamento;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables

@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import trabalhopoo.Controlador.Controlador;
 import trabalhopoo.Modelo.Efetivo;
 import trabalhopoo.Modelo.Funcionario;
+import trabalhopoo.Modelo.Substituto;
 import trabalhopoo.Modelo.Tecnico;
 
 /**
@@ -137,7 +138,26 @@ public class RelatorioFuncionarioFaixaPreco extends javax.swing.JFrame {
             limSuperior = Float.parseFloat(limSup.getText());
             for(Funcionario f:funcionarios){
                 if((f.getSalario()>=limInferior) && (f.getSalario()<=limSuperior)){
-                    System.out.println("IMPRIMIR OS DEPARTAMENTOS");
+                    for(Funcionario f: funcionarios){
+            dados = dados + "\n Nome: " + f.getNome()
+                            +"\n Salario: " + f.getSalario()
+                            +"\n Código: " + f.getCodigo()
+                            + "\n Nivel: " + f.getNivel();
+            if(f instanceof Efetivo){
+                e = (Efetivo)f;
+                dados = dados + "\n Titulação: " + e.getTitulacao()
+                              + "\n Area: " + e.getArea();
+            }
+            if(f instanceof Substituto){
+                s = (Substituto)f;
+                dados = dados + "\n Titulação: " + s.getTitulacao()
+                              + "\n Carga Horaria: " + s.getCargaHoraria();
+            }
+            if(f instanceof Tecnico){
+                t = (Tecnico)f;
+                dados = dados + "\n Função: " + t.getFuncao();
+            }
+        dados = dados + "\n\n";
                 }
             }
         }

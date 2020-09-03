@@ -16,12 +16,14 @@ public class Departamento implements Serializable{
     private String codigo;
     private String nome;
     private float gasto;
+    private int quantFuncionarios;
     private ArrayList<Funcionario>funcionarios = new ArrayList<Funcionario>();
 
     public Departamento(String codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
         this.gasto = 0.0f;
+        this.quantFuncionarios = 0;
     }
 
     public Departamento() {
@@ -58,5 +60,15 @@ public class Departamento implements Serializable{
     public float getGasto() {
         return gasto;
     }
+
+    public int getQuantFuncionarios() {
+        return quantFuncionarios;
+    }
+
+    public void setQuantFuncionarios(int quantFuncionarios) {
+        this.quantFuncionarios = quantFuncionarios;
+    }
+    
+    
 
 }

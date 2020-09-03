@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import trabalhopoo.Controlador.Controlador;
 import trabalhopoo.Modelo.Efetivo;
 import trabalhopoo.Modelo.Funcionario;
+import trabalhopoo.Modelo.Substituto;
 import trabalhopoo.Modelo.Tecnico;
 
 /**
@@ -43,14 +44,14 @@ public class BuscaFuncionarioCodigo extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        TituFunc = new javax.swing.JLabel();
+        area = new javax.swing.JLabel();
+        txtNome = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JLabel();
+        txtNivel = new javax.swing.JLabel();
+        txtTituFunc = new javax.swing.JLabel();
+        txtAreaCarga = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,21 +86,21 @@ public class BuscaFuncionarioCodigo extends javax.swing.JFrame {
 
         jLabel5.setText("Nível:");
 
-        jLabel6.setText("Titulação:");
+        TituFunc.setText("Titulação:");
 
-        jLabel7.setText("Area:");
+        area.setText("Area:");
 
-        jLabel8.setText("--");
+        txtNome.setText("--");
 
-        jLabel9.setText("--");
+        txtSalario.setText("--");
 
-        jLabel10.setText("--");
+        txtCodigo.setText("--");
 
-        jLabel11.setText("--");
+        txtNivel.setText("--");
 
-        jLabel12.setText("--");
+        txtTituFunc.setText("--");
 
-        jLabel13.setText("--");
+        txtAreaCarga.setText("--");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,20 +125,20 @@ public class BuscaFuncionarioCodigo extends javax.swing.JFrame {
                                         .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7)
+                                            .addComponent(TituFunc)
+                                            .addComponent(area)
                                             .addComponent(jLabel5)
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel3)
                                             .addComponent(jLabel2))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel11)
-                                            .addComponent(jLabel12)
-                                            .addComponent(jLabel13))))))
+                                            .addComponent(txtNome)
+                                            .addComponent(txtSalario)
+                                            .addComponent(txtCodigo)
+                                            .addComponent(txtNivel)
+                                            .addComponent(txtTituFunc)
+                                            .addComponent(txtAreaCarga))))))
                         .addGap(0, 40, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -157,27 +158,27 @@ public class BuscaFuncionarioCodigo extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel8))
+                                    .addComponent(txtNome))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
+                                    .addComponent(txtSalario))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel4)
                                 .addGap(11, 11, 11)
                                 .addComponent(jLabel5))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addComponent(txtCodigo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel11)))
+                                .addComponent(txtNivel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6)
+                        .addComponent(TituFunc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7))
+                        .addComponent(area))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addComponent(txtTituFunc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel13)))
+                        .addComponent(txtAreaCarga)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -200,19 +201,40 @@ public class BuscaFuncionarioCodigo extends javax.swing.JFrame {
         funcionarios  = control.buscaFuncionario();
         Tecnico t = null;
         Efetivo e = null;
+        Substituto s = null;
         
         if(txtCode.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Insira o Código do Docente!");
+            JOptionPane.showMessageDialog(this, "Insira o Código do Funcionário!");
             txtCode.requestFocus();
         }
         else{
             for(Funcionario f: funcionarios){
-                if (f instanceof Efetivo)
-                    e = (Efetivo) f;
-                if(e.getCodigo().equals(txtCode.getText())){
-                    System.out.println(f.getNome());
-                    System.out.println("Deu erro");
+                if(txtCode.equals(f.getCodigo())){
+                    txtNome.setText(f.getNome());
+                    txtSalario.setText(String.valueOf(f.getSalario()));
+                    txtCodigo.setText(f.getCodigo());
+                    txtNivel.setText(f.getNivel());
+                    if (f instanceof Efetivo){
+                        e = (Efetivo) f;  
+                        txtTituFunc.setText(e.getTitulacao());
+                        txtAreaCarga.setText(e.getArea());
+                    }
+                    if(f instanceof Substituto){
+                        s = (Substituto)f;
+                        txtTituFunc.setText(s.getTitulacao());
+                        area.setText("Carga Horaria:");
+                        txtAreaCarga.setText(String.valueOf(s.getCargaHoraria()));
+                    }
+                    if(f instanceof Tecnico){
+                        t = (Tecnico)f;
+                        TituFunc.setText("Função:");
+                        txtTituFunc.setText(t.getFuncao());
+                        area.setText("");
+                        txtAreaCarga.setText("");
+                    }
+                    break;
                 }
+                                
             }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -253,21 +275,21 @@ public class BuscaFuncionarioCodigo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TituFunc;
+    private javax.swing.JLabel area;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel txtAreaCarga;
     private javax.swing.JTextField txtCode;
+    private javax.swing.JLabel txtCodigo;
+    private javax.swing.JLabel txtNivel;
+    private javax.swing.JLabel txtNome;
+    private javax.swing.JLabel txtSalario;
+    private javax.swing.JLabel txtTituFunc;
     // End of variables declaration//GEN-END:variables
 }

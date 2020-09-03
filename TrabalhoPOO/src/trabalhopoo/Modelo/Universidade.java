@@ -37,6 +37,7 @@ public class Universidade {
         for (Departamento d: departamentos){
             if(d.getNome().equals(nomeDepartamento)){
                 d.setFuncionarios(e);
+                d.setQuantFuncionarios(d.getQuantFuncionarios()+1);
             }
         }
         db.addEfetivo(e);
@@ -48,6 +49,7 @@ public class Universidade {
         for(Departamento d: departamentos){
             if(d.getNome().equals(nomeDepartamento)){
                 d.setFuncionarios(s);
+                d.setQuantFuncionarios(d.getQuantFuncionarios()+1);
             }
         }
     }
@@ -58,6 +60,7 @@ public class Universidade {
         for(Departamento d: departamentos){
             if(d.getNome().equals(nomeDepartamento)){
                 d.setFuncionarios(t);
+                d.setQuantFuncionarios(d.getQuantFuncionarios()+1);
             }
         }
     }
@@ -76,6 +79,162 @@ public class Universidade {
         return instancia;
     }
 
+    public String relatorioGeral(){
+        String dados = "";
+        
+        for(Departamento d: departamentos){
+            dados = dados + " \t Nome do Departamento: " + d.getNome() +
+                        "\n Codigo do Departamento " + d.getCodigo() +
+                        "\n Gasto Total com Funcionários: " + d.getGasto()
+                         + "\n\t Funcionarios ";
+            for(Funcionario f: funcionarios){
+                dados = dados + "\n Nome: " + f.getNome()
+                            +"\n Salario: " + f.getSalario()
+                            +"\n Código: " + f.getCodigo()
+                            + "\n Nivel: " + f.getNivel()
+                            +"\n";
+            }
+            dados = dados + "\n";
+        }    
+        
+        return dados;
+    }
+    
+    public String relatorioDepartamentos(){
+         String dados = "\t Departamentos \n";
+        
+        for(Departamento d: departamentos){
+            dados = dados + " \n Nome do Departamento: " + d.getNome() +
+                        "\n Codigo do Departamento " + d.getCodigo() +
+                        "\n Gasto Total com Funcionários: " + d.getGasto()
+                         + "\n Número de Funcionarios: " + d.getQuantFuncionarios();
+
+            dados = dados + "\n\n";
+        }    
+        
+        return dados;       
+        
+    }
+    
+    public String relatorioFuncionario(){
+        String dados = "\t Funcionários \n";
+        Tecnico t;
+        Efetivo e;
+        Substituto s;
+        
+        for(Funcionario f: funcionarios){
+            dados = dados + "\n Nome: " + f.getNome()
+                            +"\n Salario: " + f.getSalario()
+                            +"\n Código: " + f.getCodigo()
+                            + "\n Nivel: " + f.getNivel();
+            if(f instanceof Efetivo){
+                e = (Efetivo)f;
+                dados = dados + "\n Titulação: " + e.getTitulacao()
+                              + "\n Area: " + e.getArea();
+            }
+            if(f instanceof Substituto){
+                s = (Substituto)f;
+                dados = dados + "\n Titulação: " + s.getTitulacao()
+                              + "\n Carga Horaria: " + s.getCargaHoraria();
+            }
+            if(f instanceof Tecnico){
+                t = (Tecnico)f;
+                dados = dados + "\n Função: " + t.getFuncao();
+            }
+        dados = dados + "\n\n";
+        }    
+        
+        return dados;
+    }
+    
+    public String relatorioDocentes(){
+        String dados = "Funcionários Docentes";
+        Efetivo e;
+        Substituto s;
+        
+        for(Funcionario f: funcionarios){
+            if(f instanceof Docente){
+                dados = dados + "\n Nome: " + f.getNome()
+                                +"\n Salario: " + f.getSalario()
+                                +"\n Código: " + f.getCodigo()
+                                + "\n Nivel: " + f.getNivel();
+                if(f instanceof Efetivo){
+                    e = (Efetivo)f;
+                    dados = dados + "\n Titulação: " + e.getTitulacao()
+                                  + "\n Area: " + e.getArea();
+                }
+                if(f instanceof Substituto){
+                    s = (Substituto)f;
+                    dados = dados + "\n Titulação: " + s.getTitulacao()
+                                  + "\n Carga Horaria: " + s.getCargaHoraria();
+                }
+            }
+
+            dados = dados + "\n\n";
+        }    
+        
+        return dados;
+    }
+    
+    public String relatorioTecnico(){
+        String dados = "\t Funcionários Técnicos \n";
+        Tecnico t;
+        
+        for(Funcionario f: funcionarios){
+            if(f instanceof Tecnico){
+                t = (Tecnico)f;
+                dados = dados + "\n Nome: " + f.getNome()
+                            +"\n Salario: " + f.getSalario()
+                            +"\n Código: " + f.getCodigo()
+                            + "\n Nivel: " + f.getNivel()                
+                            + "\n Função: " + t.getFuncao();
+            }
+            dados = dados + "\n\n";
+        }    
+        
+        return dados;        
+    }
+ 
+    public String relatorioEfetivo(){
+        String dados = "\t Funcionários Efetivos \n";
+        Efetivo e;
+        
+        for(Funcionario f: funcionarios){
+            if(f instanceof Efetivo){
+                e = (Efetivo)f;
+                dados = dados + "\n Nome: " + f.getNome()
+                            +"\n Salario: " + f.getSalario()
+                            +"\n Código: " + f.getCodigo()
+                            + "\n Nivel: " + f.getNivel()
+                            + "\n Titulação: " + e.getTitulacao()
+                            + "\n Area: " + e.getArea();
+            }
+        dados = dados + "\n\n";
+        }    
+        
+        return dados;        
+    }
+    
+    public String relatorioSubstituto(){
+        String dados = "\t Funcionários Substitutos \n";
+        Substituto s;
+        
+        for(Funcionario f: funcionarios){
+            if(f instanceof Substituto){
+                s = (Substituto)f;
+                dados = dados + "\n Nome: " + f.getNome()
+                            +"\n Salario: " + f.getSalario()
+                            +"\n Código: " + f.getCodigo()
+                            + "\n Nivel: " + f.getNivel()
+                            + "\n Titulação: " + s.getTitulacao()
+                             + "\n Carga Horaria: " + s.getCargaHoraria();
+            }
+            dados = dados + "\n\n";
+        }    
+        
+        return dados;        
+    }
+    
     public String getNome() {
         return nome;
     }

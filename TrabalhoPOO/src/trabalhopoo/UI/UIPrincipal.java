@@ -20,12 +20,6 @@ public class UIPrincipal extends javax.swing.JFrame {
      */
     public UIPrincipal() {
         initComponents();
-        InserirNomeUniversidade u = new InserirNomeUniversidade();
-        u.setVisible(true);
-        u.setTitle("Nome da Universidade");
-        u.setDefaultCloseOperation(InserirNomeUniversidade.DISPOSE_ON_CLOSE);
-        nomeUniversidade = u.getName();
-        labelNome.setText(nomeUniversidade);
     }
 
     /**
@@ -252,7 +246,7 @@ public class UIPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         RelatorioDepartamentoFaixaPreco r = new RelatorioDepartamentoFaixaPreco();
-        r.setTitle("Departamentos com o Salario dentro da Faixa de Preço");
+        r.setTitle("Departamentos com o Gasto dentro da Faixa de Preço");
         r.setVisible(true);
         r.setDefaultCloseOperation(RelatorioDepartamentoFaixaPreco.DISPOSE_ON_CLOSE);        
     }//GEN-LAST:event_jMenuItem5ActionPerformed
@@ -272,17 +266,13 @@ public class UIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        RelatorioGeral rg = new RelatorioGeral();
-        rg.setTitle("Relatorio Geral");
-        rg.setVisible(true);
-        rg.setDefaultCloseOperation(RelatorioGeral.DISPOSE_ON_CLOSE);        
+        Relatorio rg = new Relatorio(this, false);
+        rg.exibir("Relatório Geral", "Todos Departamentos/Funcionários", control.relatorioGeral());
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        RelatorioDepartamento rd = new RelatorioDepartamento();
-        rd.setTitle("Relatorio Dos Departamentos");
-        rd.setVisible(true);
-        rd.setDefaultCloseOperation(RelatorioDepartamento.DISPOSE_ON_CLOSE);  
+        Relatorio rd = new Relatorio(this, false);
+        rd.exibir("Relatório dos Departamentos", "Todos Departamentos", control.relatorioDepartamento());  
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
@@ -293,38 +283,28 @@ public class UIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        RelatorioFuncionario rf = new RelatorioFuncionario();
-        rf.setTitle("Relatorio Dos Funcionarios");
-        rf.setVisible(true);
-        rf.setDefaultCloseOperation(RelatorioFuncionario.DISPOSE_ON_CLOSE); 
+        Relatorio rf = new Relatorio(this, false);
+        rf.exibir("Relatório dos Funcionários", "Todos Funcionários", control.relatorioFuncionarios());  
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        RelatorioTecnico rt = new RelatorioTecnico();
-        rt.setTitle("Relatorio Dos Tecnicos");
-        rt.setVisible(true);
-        rt.setDefaultCloseOperation(RelatorioTecnico.DISPOSE_ON_CLOSE);         
+        Relatorio rd = new Relatorio(this, false);
+        rd.exibir("Relatório dos Técnicos", "Todos Técnicos", control.relatorioTecnico());         
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        RelatorioDocente rd = new RelatorioDocente();
-        rd.setTitle("Relatorio Dos Docentes");
-        rd.setVisible(true);
-        rd.setDefaultCloseOperation(RelatorioDocente.DISPOSE_ON_CLOSE);          
+        Relatorio rd = new Relatorio(this, false);
+        rd.exibir("Relatório dos Docentes", "Todos Docentes", control.relatorioDocente());          
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        RelatorioEfetivo re = new RelatorioEfetivo();
-        re.setTitle("Relatorio Dos Efetivos");
-        re.setVisible(true);
-        re.setDefaultCloseOperation(RelatorioEfetivo.DISPOSE_ON_CLOSE);          
+        Relatorio rd = new Relatorio(this, false);
+        rd.exibir("Relatório dos Efetivos", "Todos Efetivos", control.relatorioEfetivo()); ;          
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        RelatorioSubstituto rs = new RelatorioSubstituto();
-        rs.setTitle("Relatorio Dos Substitutos");
-        rs.setVisible(true);
-        rs.setDefaultCloseOperation(RelatorioSubstituto.DISPOSE_ON_CLOSE);         
+        Relatorio rd = new Relatorio(this, false);
+        rd.exibir("Relatório dos Substitutos", "Todos Substitutos", control.relatorioSubstituto());          
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

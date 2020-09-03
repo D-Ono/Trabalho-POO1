@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import trabalhopoo.Controlador.Controlador;
 import trabalhopoo.Modelo.Departamento;
 import trabalhopoo.Modelo.Efetivo;
+import trabalhopoo.Modelo.Funcionario;
 import trabalhopoo.Modelo.Tecnico;
 
 /**
@@ -18,6 +19,7 @@ import trabalhopoo.Modelo.Tecnico;
  */
 public class RelatorioDepartamentoFaixaPreco extends javax.swing.JFrame {
     private ArrayList<Departamento>departamentos;
+    private ArrayList<Funcionario>funcionarios;
 
     /**
      * Creates new form RelatorioDepartamentoFaixaPreco
@@ -115,8 +117,7 @@ public class RelatorioDepartamentoFaixaPreco extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Controlador control = new Controlador();
         departamentos  = control.buscaDepartamento();
-        Tecnico t = null;
-        Efetivo e = null;
+        funcionarios = control.buscaFuncionario();
         float limInf = 0.0f, limSup = 0.0f;
         
         if(txtLimInferior.getText().trim().equals("")){
@@ -132,7 +133,19 @@ public class RelatorioDepartamentoFaixaPreco extends javax.swing.JFrame {
             limSup = Float.parseFloat(txtLimSuperior.getText());
             for(Departamento d:departamentos){
                 if((d.getGasto()>=limInf) && (d.getGasto()<=limSup)){
-                    System.out.println("IMPRIMIR OS DEPARTAMENTOS");
+                    for(Departamento d: departamentos){
+                        jTextArea2.setText(" \t Nome do Departamento: " + d.getNome() +
+                                            "\n Codigo do Departamento " + d.getCodigo() +
+                                            "\n Gasto Total com Funcionários: " + d.getGasto()
+                                             + "\n\t Funcionarios ");
+                        for(Funcionario f: funcionarios){
+                            jTextArea2.setText("\n Nome: " + f.getNome()
+                                +"\n Salario: " + f.getSalario()
+                                +"\n Código: " + f.getCodigo()
+                                + "\n Nivel: " + f.getNivel()
+                                +"\n");
+                    }
+                    jTextArea2.setText("\n");
                 }
             }
         }
