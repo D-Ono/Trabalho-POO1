@@ -5,21 +5,27 @@
  */
 package trabalhopoo.UI;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import trabalhopoo.Controlador.Controlador;
+import trabalhopoo.Modelo.Departamento;
 
 /**
  *
  * @author david
  */
 public class CadastroSubstituto extends javax.swing.JFrame {
-
+    private Controlador control = new Controlador();
+    private ArrayList<Departamento>departamentos = control.buscaDepartamento();
     /**
      * Creates new form CadastroSubstituto
      */
     public CadastroSubstituto() {
         initComponents();
         jCombo.removeAllItems();
+        for(Departamento d: departamentos){
+            jCombo.addItem(d.getNome());
+        }
     }
 
     /**
@@ -253,7 +259,6 @@ public class CadastroSubstituto extends javax.swing.JFrame {
         boolean podeCadastrar = true;
         String nivel = null, titulacao = null;
         int cargaHoraria = 0;
-        Controlador control = new Controlador();
         
         if(txtNome.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this, "Insira o Nome do Docente!");
@@ -270,7 +275,7 @@ public class CadastroSubstituto extends javax.swing.JFrame {
             txtSalario.requestFocus();
             podeCadastrar = false;
         }
-        if(jCombo.isEnabled()){
+        if(!(jCombo.isEnabled())){
             JOptionPane.showMessageDialog(this, "Insira o Departamento do Docente!");
             podeCadastrar = false;
         }

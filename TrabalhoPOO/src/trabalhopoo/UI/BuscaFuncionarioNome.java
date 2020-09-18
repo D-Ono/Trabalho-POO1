@@ -200,6 +200,7 @@ public class BuscaFuncionarioNome extends javax.swing.JFrame {
         Tecnico t = null;
         Efetivo e = null;
         Substituto s = null;
+        String dados = "";
         
         if(txtNome.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this, "Insira o Nome do Funcionário!");
@@ -207,7 +208,7 @@ public class BuscaFuncionarioNome extends javax.swing.JFrame {
         }
         else{
             for(Funcionario f: funcionarios){
-                if(txtNome.equals(f.getNome())){
+                if(txtNome.getText().equals(f.getNome())){
                     txtNome1.setText(f.getNome());
                     txtSalario.setText(String.valueOf(f.getSalario()));
                     txtCodigo.setText(f.getCodigo());

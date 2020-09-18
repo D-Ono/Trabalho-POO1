@@ -36,8 +36,10 @@ public class Universidade {
         funcionarios.add(e);
         for (Departamento d: departamentos){
             if(d.getNome().equals(nomeDepartamento)){
+                d.setGasto((float) salario);
                 d.setFuncionarios(e);
                 d.setQuantFuncionarios(d.getQuantFuncionarios()+1);
+                d.setGasto((float)salario);
             }
         }
         db.addEfetivo(e);
@@ -50,6 +52,7 @@ public class Universidade {
             if(d.getNome().equals(nomeDepartamento)){
                 d.setFuncionarios(s);
                 d.setQuantFuncionarios(d.getQuantFuncionarios()+1);
+                d.setGasto((float)salario);
             }
         }
     }
@@ -61,6 +64,7 @@ public class Universidade {
             if(d.getNome().equals(nomeDepartamento)){
                 d.setFuncionarios(t);
                 d.setQuantFuncionarios(d.getQuantFuncionarios()+1);
+                d.setGasto((float) t.getSalario());
             }
         }
     }
@@ -87,14 +91,15 @@ public class Universidade {
                         "\n Codigo do Departamento " + d.getCodigo() +
                         "\n Gasto Total com Funcionários: " + d.getGasto()
                          + "\n\t Funcionarios ";
-            for(Funcionario f: funcionarios){
+            for(Funcionario f: d.getFuncionarios()){
                 dados = dados + "\n Nome: " + f.getNome()
-                            +"\n Salario: " + f.getSalario()
-                            +"\n Código: " + f.getCodigo()
-                            + "\n Nivel: " + f.getNivel()
-                            +"\n";
+                              +"\n Salario: " + f.getSalario()
+                              +"\n Código: " + f.getCodigo()
+                              + "\n Nivel: " + f.getNivel()
+                              +"\n";
+                        
             }
-            dados = dados + "\n";
+            dados = dados + "\n\n";
         }    
         
         return dados;
@@ -141,14 +146,14 @@ public class Universidade {
                 t = (Tecnico)f;
                 dados = dados + "\n Função: " + t.getFuncao();
             }
-        dados = dados + "\n\n";
+            dados = dados + "\n\n";
         }    
         
         return dados;
     }
     
     public String relatorioDocentes(){
-        String dados = "Funcionários Docentes";
+        String dados = "\t Funcionários Docentes";
         Efetivo e;
         Substituto s;
         
@@ -168,9 +173,10 @@ public class Universidade {
                     dados = dados + "\n Titulação: " + s.getTitulacao()
                                   + "\n Carga Horaria: " + s.getCargaHoraria();
                 }
+                dados = dados + "\n\n";
             }
 
-            dados = dados + "\n\n";
+            
         }    
         
         return dados;
@@ -188,8 +194,9 @@ public class Universidade {
                             +"\n Código: " + f.getCodigo()
                             + "\n Nivel: " + f.getNivel()                
                             + "\n Função: " + t.getFuncao();
+                dados = dados + "\n\n";
             }
-            dados = dados + "\n\n";
+            
         }    
         
         return dados;        
@@ -208,8 +215,9 @@ public class Universidade {
                             + "\n Nivel: " + f.getNivel()
                             + "\n Titulação: " + e.getTitulacao()
                             + "\n Area: " + e.getArea();
+                dados = dados + "\n\n";
             }
-        dados = dados + "\n\n";
+        
         }    
         
         return dados;        
@@ -228,8 +236,9 @@ public class Universidade {
                             + "\n Nivel: " + f.getNivel()
                             + "\n Titulação: " + s.getTitulacao()
                              + "\n Carga Horaria: " + s.getCargaHoraria();
+                dados = dados + "\n\n";
             }
-            dados = dados + "\n\n";
+            
         }    
         
         return dados;        

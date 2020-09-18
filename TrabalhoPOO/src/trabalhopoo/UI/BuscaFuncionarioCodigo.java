@@ -209,7 +209,7 @@ public class BuscaFuncionarioCodigo extends javax.swing.JFrame {
         }
         else{
             for(Funcionario f: funcionarios){
-                if(txtCode.equals(f.getCodigo())){
+                if(txtCode.getText().equals(f.getCodigo())){
                     txtNome.setText(f.getNome());
                     txtSalario.setText(String.valueOf(f.getSalario()));
                     txtCodigo.setText(f.getCodigo());

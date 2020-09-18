@@ -122,7 +122,9 @@ public class RelatorioFuncionarioFaixaPreco extends javax.swing.JFrame {
         Controlador control = new Controlador();
         funcionarios  = control.buscaFuncionario();
         Tecnico t = null;
+        Substituto s = null;
         Efetivo e = null;
+        String dados = "";
         float limInferior = 0.0f, limSuperior = 0.0f;
         
         if(limInf.getText().trim().equals("")){
@@ -138,29 +140,29 @@ public class RelatorioFuncionarioFaixaPreco extends javax.swing.JFrame {
             limSuperior = Float.parseFloat(limSup.getText());
             for(Funcionario f:funcionarios){
                 if((f.getSalario()>=limInferior) && (f.getSalario()<=limSuperior)){
-                    for(Funcionario f: funcionarios){
-            dados = dados + "\n Nome: " + f.getNome()
-                            +"\n Salario: " + f.getSalario()
-                            +"\n Código: " + f.getCodigo()
-                            + "\n Nivel: " + f.getNivel();
-            if(f instanceof Efetivo){
-                e = (Efetivo)f;
-                dados = dados + "\n Titulação: " + e.getTitulacao()
-                              + "\n Area: " + e.getArea();
-            }
-            if(f instanceof Substituto){
-                s = (Substituto)f;
-                dados = dados + "\n Titulação: " + s.getTitulacao()
-                              + "\n Carga Horaria: " + s.getCargaHoraria();
-            }
-            if(f instanceof Tecnico){
-                t = (Tecnico)f;
-                dados = dados + "\n Função: " + t.getFuncao();
-            }
-        dados = dados + "\n\n";
+                        dados = dados + "\n Nome: " + f.getNome()
+                                +"\n Salario: " + f.getSalario()
+                                +"\n Código: " + f.getCodigo()
+                                + "\n Nivel: " + f.getNivel();
+                        if(f instanceof Efetivo){
+                            e = (Efetivo)f;
+                            dados = dados + "\n Titulação: " + e.getTitulacao()
+                                          + "\n Area: " + e.getArea();
+                        }
+                        if(f instanceof Substituto){
+                            s = (Substituto)f;
+                            dados = dados + "\n Titulação: " + s.getTitulacao()
+                                          + "\n Carga Horaria: " + s.getCargaHoraria();
+                        }
+                        if(f instanceof Tecnico){
+                            t = (Tecnico)f;
+                            dados = dados + "\n Função: " + t.getFuncao();
+                        }
+                        dados = dados + "\n\n";
                 }
             }
         }
+        jTextArea2.setText(dados);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

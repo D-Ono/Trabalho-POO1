@@ -6,7 +6,17 @@
 package trabalhopoo.UI;
 
 import java.awt.Color;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import trabalhopoo.Controlador.Controlador;
+import trabalhopoo.Dados.ArquivosSalvar;
+import trabalhopoo.Modelo.Departamento;
+import trabalhopoo.Modelo.Funcionario;
 
 /**
  *
@@ -15,6 +25,9 @@ import trabalhopoo.Controlador.Controlador;
 public class UIPrincipal extends javax.swing.JFrame {
     private String nomeUniversidade;
     private Controlador control = new Controlador();
+    private boolean carregado = false;
+    private ArrayList<Departamento>departamentos = control.buscaDepartamento();
+    private ArrayList<Funcionario>funcionarios = control.buscaFuncionario();
     /**
      * Creates new form UIPrincipal
      */
@@ -59,7 +72,7 @@ public class UIPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        labelNome.setFont(new java.awt.Font("Verdana", 3, 24)); // NOI18N
+        labelNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhopoo/Imagens/UNESP_Logo.jpg"))); // NOI18N
 
         jMenu1.setText("Cadastrar");
 
@@ -208,9 +221,19 @@ public class UIPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Dados");
 
         jMenuItem14.setText("Carregar Dados");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem14);
 
         jMenuItem16.setText("Salvar Dados");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem16);
 
         jMenuBar1.add(jMenu3);
@@ -222,16 +245,16 @@ public class UIPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(387, 387, 387)
-                .addComponent(labelNome)
-                .addContainerGap(513, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(labelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addComponent(labelNome)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addGap(77, 77, 77)
+                .addComponent(labelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
         );
 
         pack();
@@ -334,6 +357,72 @@ public class UIPrincipal extends javax.swing.JFrame {
         cs.setVisible(true);
         cs.setDefaultCloseOperation(CadastroSubstituto.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        if (carregado) {
+            JOptionPane.showMessageDialog(null, "Você já carregou os dados!!");
+        } else {
+            try {
+                FileInputStream funcionario = new FileInputStream(ArquivosSalvar.getArquivoFuncionarios());
+                ObjectInputStream ofuncionario = new ObjectInputStream(funcionario);
+                Funcionario f = (Funcionario)ofuncionario.readObject();
+                funcionarios.add(f);
+                ofuncionario.close();
+                funcionario.close();
+            }
+            catch (ClassNotFoundException | IOException e) {
+                JOptionPane.showMessageDialog(null, "Não Foram encontrados Dados de Funcionarios!!");
+            }
+            try {
+                FileInputStream departamento = new FileInputStream(ArquivosSalvar.getArquivoDepartamentos());
+                ObjectInputStream odepartamento = new ObjectInputStream(departamento);
+                Departamento d = (Departamento) odepartamento.readObject();
+                departamentos.add(d);
+                odepartamento.close();
+                departamento.close();
+            }
+            catch (ClassNotFoundException | IOException e) {
+                JOptionPane.showMessageDialog(null, "Não Foram encontrados Dados de Departamentos!!");
+            }
+            carregado = true;
+            JOptionPane.showMessageDialog(null, "Dados carregados com sucesso!!");
+        }
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+    try {
+            if(!funcionarios.isEmpty()) {
+                FileOutputStream funcionario = new FileOutputStream(ArquivosSalvar.getArquivoFuncionarios());
+                ObjectOutputStream ofuncionario = new ObjectOutputStream(funcionario);
+                for(Funcionario f : funcionarios){
+                    ofuncionario.writeObject(f);
+                }
+                ofuncionario.flush();
+                ofuncionario.close();
+                funcionario.flush();
+                funcionario.close();
+            }
+        }
+        catch(IOException e) {
+            
+        }
+        try {
+            if(!departamentos.isEmpty()) {
+                FileOutputStream departamento = new FileOutputStream(ArquivosSalvar.getArquivoDepartamentos());
+                ObjectOutputStream odepartamento = new ObjectOutputStream(departamento);
+                for(Departamento l : departamentos){
+                    odepartamento.writeObject(l);
+                }
+                odepartamento.flush();
+                departamento.flush();
+                odepartamento.close();
+                departamento.close();
+            }
+        }
+        catch(IOException e) {
+        }
+        JOptionPane.showMessageDialog(null, "Dados salvos com sucesso!!");
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     /**
      * @param args the command line arguments

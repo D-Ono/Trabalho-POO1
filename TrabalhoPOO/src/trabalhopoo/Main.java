@@ -21,6 +21,7 @@ public class Main {
     public static void main(String[] args) {
         UIPrincipal p = new UIPrincipal();
         p.setVisible(true);
+        p.setTitle("Cadastro de Departamentos/Funcionários da Universidade");
     }
     
 }

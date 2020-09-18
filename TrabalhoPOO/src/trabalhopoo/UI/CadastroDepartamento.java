@@ -142,7 +142,8 @@ public class CadastroDepartamento extends javax.swing.JFrame {
             txtCodigo.requestFocus();
         }else if(control.existeDepartamento(txtNome.getText())){
                 jLabel4.setText("O Departamento já existe!");
-        }else{            
+        }else{   
+            jLabel4.setText("");
             control.addDepartamento(txtNome.getText(), txtCodigo.getText());
             JOptionPane.showMessageDialog(this, "Cadastro Realizado Com Sucesso!");
             txtNome.setText("");

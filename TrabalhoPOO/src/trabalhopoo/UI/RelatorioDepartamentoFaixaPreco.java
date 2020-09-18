@@ -118,6 +118,7 @@ public class RelatorioDepartamentoFaixaPreco extends javax.swing.JFrame {
         Controlador control = new Controlador();
         departamentos  = control.buscaDepartamento();
         funcionarios = control.buscaFuncionario();
+        String dados = "";
         float limInf = 0.0f, limSup = 0.0f;
         
         if(txtLimInferior.getText().trim().equals("")){
@@ -131,24 +132,26 @@ public class RelatorioDepartamentoFaixaPreco extends javax.swing.JFrame {
         else{
             limInf = Float.parseFloat(txtLimInferior.getText());
             limSup = Float.parseFloat(txtLimSuperior.getText());
+            
             for(Departamento d:departamentos){
+                
                 if((d.getGasto()>=limInf) && (d.getGasto()<=limSup)){
-                    for(Departamento d: departamentos){
-                        jTextArea2.setText(" \t Nome do Departamento: " + d.getNome() +
+                    dados = dados + " \t Nome do Departamento: " + d.getNome() +
                                             "\n Codigo do Departamento " + d.getCodigo() +
                                             "\n Gasto Total com Funcionários: " + d.getGasto()
-                                             + "\n\t Funcionarios ");
-                        for(Funcionario f: funcionarios){
-                            jTextArea2.setText("\n Nome: " + f.getNome()
+                                             + "\n\t Funcionarios ";
+                    for(Funcionario f: d.getFuncionarios()){
+                            dados = dados + "\n Nome: " + f.getNome()
                                 +"\n Salario: " + f.getSalario()
                                 +"\n Código: " + f.getCodigo()
                                 + "\n Nivel: " + f.getNivel()
-                                +"\n");
+                                +"\n";
                     }
-                    jTextArea2.setText("\n");
+                    dados = dados + "\n\n";
                 }
             }
         }
+        jTextArea2.setText(dados);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -11,6 +11,7 @@ import trabalhopoo.Controlador.Controlador;
 import trabalhopoo.Modelo.Departamento;
 import trabalhopoo.Modelo.Efetivo;
 import trabalhopoo.Modelo.Funcionario;
+import trabalhopoo.Modelo.Substituto;
 import trabalhopoo.Modelo.Tecnico;
 
 /**
@@ -20,6 +21,7 @@ import trabalhopoo.Modelo.Tecnico;
 public class InformacaoDepartamentoEspecifico extends javax.swing.JFrame {
     private Controlador control = new Controlador();
     private ArrayList<Departamento>departamentos = control.buscaDepartamento();
+    private ArrayList<Funcionario>funcionarios;
     
    
     /**
@@ -136,20 +138,47 @@ public class InformacaoDepartamentoEspecifico extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        String dados = "";
         Tecnico t = null;
+        Substituto s = null;
         Efetivo e = null;
         
-        if(txtCodigo.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Insira o Codigo do Departamento!");
-            txtCodigo.requestFocus();
-        }
-        else{
+        if(!(txtCodigo.getText().trim().equals("")) || (jCombo.isEnabled())){
             for(Departamento d: departamentos){
-                if(d.getCodigo().equals(txtCodigo.getText())){
-                    
+                if(d.getCodigo().equals(txtCodigo.getText()) || d.getNome().equals((String)jCombo.getSelectedItem())){
+                    dados = dados + " \n Nome do Departamento: " + d.getNome() +
+                        "\n Codigo do Departamento " + d.getCodigo() +
+                        "\n Gasto Total com Funcionários: " + d.getGasto()
+                         + "\n Número de Funcionarios: " + d.getQuantFuncionarios();
+                    dados = dados + "\n\n Funcionários: ";
+                    funcionarios = d.getFuncionarios();
+                    for(Funcionario f:funcionarios){
+                        dados = dados + "\n Nome: " + f.getNome()
+                                +"\n Salario: " + f.getSalario()
+                                +"\n Código: " + f.getCodigo()
+                                + "\n Nivel: " + f.getNivel();
+                        if(f instanceof Efetivo){
+                            e = (Efetivo)f;
+                            dados = dados + "\n Titulação: " + e.getTitulacao()
+                                          + "\n Area: " + e.getArea();
+                        }
+                        if(f instanceof Substituto){
+                            s = (Substituto)f;
+                            dados = dados + "\n Titulação: " + s.getTitulacao()
+                                          + "\n Carga Horaria: " + s.getCargaHoraria();
+                        }
+                        if(f instanceof Tecnico){
+                            t = (Tecnico)f;
+                            dados = dados + "\n Função: " + t.getFuncao();
+                        }
+                        dados = dados + "\n\n";
+                    }
                 }
             }
+            jTextArea2.setText(dados);
+        }
+        else{
+            jTextArea2.setText("Departamento Não Encontrado!!!");
         }         
     }//GEN-LAST:event_jButton2ActionPerformed
 

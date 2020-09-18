@@ -5,21 +5,27 @@
  */
 package trabalhopoo.UI;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import trabalhopoo.Controlador.Controlador;
+import trabalhopoo.Modelo.Departamento;
 
 /**
  *
  * @author david
  */
 public class CadastroEfetivo extends javax.swing.JFrame {
-
+    private Controlador control = new Controlador();
+    private ArrayList<Departamento>departamentos = control.buscaDepartamento();
     /**
      * Creates new form CadastroEfetivo
      */
     public CadastroEfetivo() {
         initComponents();
         jCombo.removeAllItems();
+        for(Departamento d: departamentos){
+            jCombo.addItem(d.getNome());
+        }  
     }
 
     /**
@@ -281,7 +287,6 @@ public class CadastroEfetivo extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         boolean podeCadastrar = true;
         String nivel = null, titulacao = null, area = null;
-        Controlador control = new Controlador();
         
         if(txtNome.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this, "Insira o Nome do Docente!");
@@ -299,7 +304,7 @@ public class CadastroEfetivo extends javax.swing.JFrame {
             podeCadastrar = false;
         }
         
-        if(jCombo.isEnabled()){
+        if(!(jCombo.isEnabled())){
             JOptionPane.showMessageDialog(this, "Insira o Departamento do Docente!");
             podeCadastrar = false;
         }
@@ -349,10 +354,7 @@ public class CadastroEfetivo extends javax.swing.JFrame {
             txtSalario.setText("");
             jCombo.setEnabled(true);
             JOptionPane.showMessageDialog(this, "Cadastro do Docente realizado com Sucesso!");
-        }
-        else{
-            JOptionPane.showMessageDialog(this, "Departamento Inexistente!");
-        }        
+        }      
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

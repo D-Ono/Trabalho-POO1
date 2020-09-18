@@ -53,14 +53,19 @@ public class Departamento implements Serializable{
     }
 
     public void setFuncionarios(Funcionario funcionarios) {
-        this.funcionarios.add(funcionarios);
-        gasto = (float) (gasto + funcionarios.getSalario());
+        this.funcionarios.add(funcionarios);   
     }
 
     public float getGasto() {
         return gasto;
     }
 
+    public void setGasto(float gasto) {
+        this.gasto = gasto;
+    }
+
+    
+    
     public int getQuantFuncionarios() {
         return quantFuncionarios;
     }
